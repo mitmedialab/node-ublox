@@ -24,8 +24,6 @@ class UbxNavMessage extends UbxMessage {
                 message = new UbxNavMessage();
         }
 
-        console.log(message);
-
         return message;
     }
 

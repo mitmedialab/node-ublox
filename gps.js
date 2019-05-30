@@ -4,13 +4,11 @@ const decode = require("./decoder");
 const {Socket} = require('net');
 
 class GpsReceiver extends EventEmitter {
-    constructor(host, port) {
+    constructor(stream) {
         super();
-        this.port = port || 2002;
-        this.host = host || 'localhost';
-        this.socket = new Socket();
-
-        this.chunker = this.socket.pipe(new UBloxChunker);
+        this.stream = stream;
+        this.chunker = this.stream.pipe(new UBloxChunker);
+        this.queue = [];
 
         this.chunker.on('data', (data) => {
             let message = decode(data);
@@ -18,6 +16,20 @@ class GpsReceiver extends EventEmitter {
                 this.emit('message', message);
             }
         });
+    }
+
+    write(data) {
+        this.stream.write(data);
+    }
+}
+
+class TelnetGpsReceiver extends GpsReceiver {
+    constructor(host, port) {
+        super(new Socket());
+
+        this.port = port || 2002;
+        this.host = host || 'localhost';
+        this.socket = this.stream;
 
         this.socket.on('close', () => {
             console.log('Socket closed');
@@ -40,10 +52,9 @@ class GpsReceiver extends EventEmitter {
             console.log('Socket connected');
         });
     }
-
-    write(data) {
-        this.socket.write(data);
-    }
 }
 
-module.exports = GpsReceiver;
+module.exports = {
+    GpsReceiver,
+    TelnetGpsReceiver
+};
