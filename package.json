@@ -1,0 +1,11 @@
+{
+  "name": "ublox",
+  "version": "0.1.0",
+  "description": "Protocol for U-blox GPS receivers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Mayton <bmayton@media.mit.edu>",
+  "license": "MIT"
+}
