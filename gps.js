@@ -9,13 +9,21 @@ class GpsReceiver extends EventEmitter {
         this.stream = stream;
         this.chunker = this.stream.pipe(new UBloxChunker);
         this.queue = [];
+        this.inflight = null;
 
         this.chunker.on('data', (data) => {
             let message = decode(data);
+
+            if(message instanceof 
+
             if(message !== null) {
                 this.emit('message', message);
             }
         });
+    }
+
+    finish(result) {
+        
     }
 
     write(data) {

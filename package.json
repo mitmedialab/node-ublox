@@ -1,11 +1,37 @@
 {
-  "name": "ublox",
-  "version": "0.1.0",
+  "_from": "git+ssh://noa.media.mit.edu/~/git/ublox",
+  "_id": "ublox@0.1.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/ublox",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+ssh://noa.media.mit.edu/~/git/ublox",
+    "rawSpec": "git+ssh://noa.media.mit.edu/~/git/ublox",
+    "saveSpec": "git+ssh://noa.media.mit.edu/~/git/ublox",
+    "fetchSpec": "ssh://noa.media.mit.edu/~/git/ublox",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+ssh://noa.media.mit.edu/~/git/ublox#5b6c02cdea3ae285426e195a41dc536228c30d16",
+  "_spec": "git+ssh://noa.media.mit.edu/~/git/ublox",
+  "_where": "/home/bmayton/software/gpstest",
+  "author": {
+    "name": "Brian Mayton",
+    "email": "bmayton@media.mit.edu"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "Protocol for U-blox GPS receivers",
+  "license": "MIT",
   "main": "index.js",
+  "name": "ublox",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Brian Mayton <bmayton@media.mit.edu>",
-  "license": "MIT"
+  "version": "0.1.0"
 }

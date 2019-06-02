@@ -12,9 +12,9 @@ class UbxAckMessage extends UbxMessage {
     static decode(messageId, payload) {
         switch(messageId) {
             case UBX_ACK_ACK:
-                return new UbxAckAck.decode(payload);
+                return UbxAckAck.decode(payload);
             case UBX_ACK_NAK:
-                return new UbxAckNak.decode(payload);    
+                return UbxAckNak.decode(payload);    
             default:
                 return new UbxAckMessage();
         }
@@ -28,7 +28,7 @@ class UbxAckMessage extends UbxMessage {
 class UbxAckAck extends UbxAckMessage {
     constructor(options) {
         super();
-        this.messageid = UBX_ACK_ACK;
+        this.messageId = UBX_ACK_ACK;
         this.payload = Object.assign({
             clsId: undefined,
             msgId: undefined
@@ -54,7 +54,7 @@ class UbxAckAck extends UbxAckMessage {
 class UbxAckNak extends UbxAckMessage {
     constructor(options) {
         super();
-        this.messageid = UBX_ACK_NAK;
+        this.messageId = UBX_ACK_NAK;
         this.payload = Object.assign({
             clsId: undefined,
             msgId: undefined

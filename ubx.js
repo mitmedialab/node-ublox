@@ -2,7 +2,7 @@ const GpsMessage = require("./message");
 const {MessageDecodeError, MessageChecksumError, 
     MessageSerializationError} = require("./error");
 const {toHex} = require("./common");
-const {UBX_NAV, UBX_CFG} = require("./ubx-msgtypes");
+const {UBX_NAV, UBX_CFG, UBX_ACK} = require("./ubx-msgtypes");
 
 function ubxChecksum(data) {
     let ck_a = 0, ck_b = 0;
@@ -49,13 +49,14 @@ class UbxMessage extends GpsMessage {
                 break;
             case UBX_ACK:
                 message = UbxAckMessage.decode(messageId, payload);
+                break;
             default:
                 message = new UbxMessage();
         }
 
         message.messageClass = messageClass;
         message.messageId = messageId;
-        message.data = data;
+        //message.data = data;
         return message;
     }
 
