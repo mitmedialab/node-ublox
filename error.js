@@ -19,5 +19,12 @@ class MessageSerializationError extends Error {
     }
 }
 
+class MessageTypeError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'MessageTypeError';
+    }
+}
+
 module.exports = {MessageDecodeError, MessageChecksumError, 
-    MessageSerializationError};
+    MessageSerializationError, MessageTypeError};

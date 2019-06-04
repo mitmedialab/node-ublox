@@ -33,7 +33,7 @@ class NmeaMessage extends GpsMessage {
         if(message === null) {
             message = new NmeaMessage()
         }
-        message.data = data;
+        //message.data = data;
         message.sentence = sentence;
 
         return message;

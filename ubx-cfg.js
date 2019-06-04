@@ -1,5 +1,5 @@
 const {UbxMessage} = require("./ubx");
-const {UBX_CFG, UBX_CFG_MSG} = require('./ubx-msgtypes');
+const {UBX_CFG, UBX_CFG_MSG, UBX_CFG_RATE} = require('./ubx-msgtypes');
 const {MessageDecodeError, MessageSerializationError} = require('./error');
 
 
@@ -44,7 +44,30 @@ class UbxCfgMsg extends UbxCfgMessage {
     }
 }
 
+class UbxCfgRate extends UbxCfgMessage {
+    constructor(options) {
+        super();
+        this.messageId = UBX_CFG_RATE;
+        this.payload = Object.assign({
+            measRate: 1000,
+            navRate: 1,
+            timeRef: 1
+        }, options);
+    };
+
+    serializePayload() {
+        let pl = this.payload;
+        let data = Buffer.alloc(6);
+        data.writeUInt16LE(pl.measRate, 0);
+        data.writeUInt16LE(pl.navRate, 2);
+        data.writeUInt16LE(pl.timeRef, 4);
+
+        return data;
+    }
+}
+
 module.exports = {
     UbxCfgMessage,
-    UbxCfgMsg
+    UbxCfgMsg,
+    UbxCfgRate
 }

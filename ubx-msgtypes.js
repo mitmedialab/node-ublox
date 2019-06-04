@@ -96,5 +96,15 @@ module.exports = {
     NMEA_TXT: 0x41,
     NMEA_VLW: 0x0F,
     NMEA_VTG: 0x05,
-    NMEA_ZDA: 0x08
+    NMEA_ZDA: 0x08,
+
+    RTCM3_CLASS: 0xF5,
+    RTCM3_1005: 0x05,
+    RTCM3_1074: 0x4A,
+    RTCM3_1077: 0x4D,
+    RTCM3_1084: 0x54,
+    RTCM3_1087: 0x57,
+    RTCM3_1124: 0x7C,
+    RTCM3_1230: 0xE6,
+    RTCM3_4072_0: 0xFE
 };

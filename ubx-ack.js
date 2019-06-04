@@ -1,7 +1,7 @@
 const {UbxMessage} = require("./ubx");
 const {toHex} = require("./common");
 const {MessageDecodeError} = require("./error");
-const {UBX_ACK, UBX_ACK_ACK, UBX_ACK_NACK} = require ("./ubx-msgtypes");
+const {UBX_ACK, UBX_ACK_ACK, UBX_ACK_NAK} = require ("./ubx-msgtypes");
 
 class UbxAckMessage extends UbxMessage {
     constructor() {
