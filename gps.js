@@ -15,7 +15,13 @@ class GpsReceiver extends EventEmitter {
         this.queue = new CommandQueue();
 
         this.chunker.on('data', (data) => {
-            let message = decode(data);
+            let message = null;
+
+            try {
+                message = decode(data);
+            } catch(e) {
+                this.emit('error', e);
+            }
 
             if(message !== null) {
                 this.emit('message', message);

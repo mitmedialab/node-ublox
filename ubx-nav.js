@@ -316,7 +316,6 @@ class UbxNavSat extends UbxNavMessage {
             svs.push(readSv(data.slice(8+12*i, 8+12*(i+1))));
         }
 
-        console.log(inspect(svs, {depth: 99, color: true}));
 
         return new UbxNavSat({
             iTOW: data.readUInt32LE(0),
@@ -328,4 +327,10 @@ class UbxNavSat extends UbxNavMessage {
     }
 }
 
-module.exports = {UbxNavMessage};
+module.exports = {
+    UbxNavMessage,
+    UbxNavHPPosLLH,
+    UbxNavSvin,
+    UbxNavPvt,
+    UbxNavSat
+};

@@ -54,7 +54,7 @@ class UBloxChunker extends Transform {
             } else {
                 /* Garbage/Unknown */
                 let c = data.readUInt8();
-                console.log("C", c, String.fromCharCode(c));
+                //console.log("C", c, String.fromCharCode(c));
 
                 data = data.slice(1);
             }
