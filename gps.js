@@ -34,8 +34,8 @@ class GpsReceiver extends EventEmitter {
                 reject(new MessageTypeError("Command must be UbxCfgMessage"));
                 return;
             }
-           
-            if(response instanceof UbxAckMessage && 
+
+            if(response instanceof UbxAckMessage &&
               response.payload.clsId == command.messageClass &&
               response.payload.msgId == command.messageId) {
                 if(response instanceof UbxAckAck) {
@@ -75,6 +75,11 @@ class GpsReceiver extends EventEmitter {
         return this.request(new UbxCfgMsg({
             msgClass, msgId, rate
         }));
+    }
+
+    async setNavConfig(options) {
+        const {UbxCfgNav5} = require("./ubx-cfg");
+        return this.request(new UbxCfgNav5(options));
     }
 }
 
